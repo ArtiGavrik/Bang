@@ -2,18 +2,16 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Gavrilov.Gavrilov
+namespace Gavrilov
 {
     class Lin
     {
-        protected double[] x;
-        public double[] Func(double a, double b)
+        protected List<float> x;
+        public List<float> Check(float a, float b)
         {
             if (a == 0)
-            {
-                throw new Exception("Нет корней");
-            }
-            return x = new double[] { (-b / a) };
+                return null;
+            return x = new List<float>() { -b / a };
         }
     }
 }

@@ -1,36 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Gavrilov;
 
-namespace Gavrilov.Gavrilov
+namespace Gavrilov
 {
-    class Kvad:Lin
+    class Kvad:Lin, EquationInterface
     {
-        protected double Discriminant(double a, double b, double c)
+        protected float Discriminant(float a, float b, float c)
         {
             return b * b - (4 * a * c);
         }
-        protected double[] Func(int a, int b, int c)
+        public List<float> Solve(float a, float b, float c)
         {
             if (a == 0)
-            {
-                return Func(b, c);
-            }
-            double disc = Discriminant(a, b, c);
+                return Check(b, c);
+            float disc = Discriminant(a, b, c);
+            if (disc < 0)
+                return null;
             if (disc == 0)
-            {
-                return x = new double[] { -b / (2 * a) };
-            }
-            if (disc > 0)
-            {
-                disc = Math.Sqrt(disc);
-                return x = new double[]
-                {
-                    (-b + disc) / (2 * a),
-                    (-b - disc) / (2 * a)
-                };
-            }
-            throw new Exception("Корней нет");
+                return x = new List<float>() { -b / (2 * a) };
+            disc = (float)Math.Sqrt(disc);
+            return x = new List<float> {
+                (-b + disc) / (2 * a),
+                (-b - disc) / (2 * a)
+            };
         }
     }
 }
