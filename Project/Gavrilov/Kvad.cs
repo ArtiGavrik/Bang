@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Gavrilov;
 
 namespace Gavrilov
 {
@@ -15,9 +14,10 @@ namespace Gavrilov
         {
             if (a == 0)
                 return Check(b, c);
+            GavrilovLog.I().Log("Определено, что это квадратное уравнение");
             float disc = Discriminant(a, b, c);
             if (disc < 0)
-                return null;
+                throw new GavrilovException("Ошибка: уравнение не имеет решений");
             if (disc == 0)
                 return x = new List<float>() { -b / (2 * a) };
             disc = (float)Math.Sqrt(disc);
